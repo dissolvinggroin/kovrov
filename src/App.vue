@@ -1,27 +1,39 @@
+<script setup>
+import { RouterView } from 'vue-router'
+import MyHeader from './components/Header.vue' // Твой путь к хедеру
+import MyFooter from './components/Footer.vue' // Твой путь к футеру
+</script>
+
 <template>
-    <div id="app">
-      <Header />
-      <router-view /> <!-- Здесь будут отображаться страницы -->
-      <Footer />
-    </div>
-  </template>
-  
-  <script setup>
-  import Header from '@/components/Header.vue';
-  import Footer from '@/components/Footer.vue';
-  </script>
-  
-  <style>
-  #app {
-    font-family: Arial, sans-serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  </style>
+  <div class="app-wrapper">
+    <!-- Твой хедер -->
+    <MyHeader /> 
+    
+    <!-- Сюда Vue Router будет подставлять страницы (Home, History, News) -->
+    <main>
+      <RouterView />
+    </main>
+    
+    <!-- Твой футер -->
+    <MyFooter />
+  </div>
+</template>
+
+<style>
+/* Глобальные стили */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fafafa;
+}
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1; /* Чтобы футер всегда был прижат к низу, если контента мало */
+}
+</style>
