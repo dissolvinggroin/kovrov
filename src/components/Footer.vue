@@ -1,117 +1,118 @@
+<script setup lang="ts">
+import { RouterLink } from 'vue-router'
+
+const year = new Date().getFullYear()
+</script>
+
 <template>
   <footer class="site-footer">
-    <div class="container footer-content">
-      
-      <!-- Колонка 1: Лого/Бренд -->
-      <div class="footer-col brand-col">
-        <h3 class="brand-text">КОВРОВ</h3>
-        <p>Информационный портал города.</p>
+    <div class="container footer-grid">
+      <div class="footer-lead">
+        <h2>Ковров</h2>
+        <p>Городская информация, маршруты, события и достопримечательности Коврова.</p>
       </div>
 
-      <!-- Колонка 2: Навигация -->
       <div class="footer-col">
-        <h4>Навигация</h4>
-        <ul class="footer-links">
+        <h3>Разделы</h3>
+        <ul>
           <li><RouterLink to="/">Главная</RouterLink></li>
-          <li><RouterLink to="/news">Новости</RouterLink></li>
-          <li><RouterLink to="/history">История</RouterLink></li>
+          <li><RouterLink to="/guide">Маршруты и события</RouterLink></li>
+          <li><RouterLink to="/heritage">История и наследие</RouterLink></li>
         </ul>
       </div>
 
-      <!-- Колонка 3: Контакты -->
       <div class="footer-col">
-        <h4>Контакты</h4>
-        <p>📍 ул. Дегтярёва, д. 1</p>
-        <p>📞 +7 (49232) 0-00-00</p>
-        <p>📧 info@kovrov-city.ru</p>
+        <h3>Полезно</h3>
+        <ul>
+          <li><RouterLink :to="{ path: '/', hash: '#city-map' }">Карта города</RouterLink></li>
+          <li><RouterLink :to="{ path: '/guide', hash: '#events' }">События</RouterLink></li>
+          <li><RouterLink :to="{ path: '/', hash: '#places' }">Достопримечательности</RouterLink></li>
+        </ul>
       </div>
-
     </div>
 
-    <!-- Копирайт (полоска внизу) -->
-    <div class="copyright-bar">
-      <div class="container">
-        &copy; 2026 МойГород. Все права защищены.
-      </div>
+    <div class="container footer-bottom">
+      <span>© {{ year }} Ковров</span>
     </div>
   </footer>
 </template>
 
 <style scoped>
 .site-footer {
-  background-color: #ffffff;
-  border-top: 1px solid #eaeaea; /* Тонкая линия сверху */
-  color: #333;
-  margin-top: auto;
+  margin-top: 3rem;
+  padding: 2.25rem 0 1.25rem;
+  background: #18354a;
+  color: rgba(255, 255, 255, 0.88);
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+.footer-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) repeat(2, minmax(0, 1fr));
+  gap: 1rem;
 }
 
-.footer-content {
-  padding: 50px 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 40px;
-}
-
+.footer-lead,
 .footer-col {
-  flex: 1;
-  min-width: 250px;
+  padding: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.04);
 }
 
-.brand-text {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: #333;
-  letter-spacing: 0.1em;
-  margin-bottom: 15px;
-  text-transform: uppercase;
+.footer-lead h2,
+.footer-col h3 {
+  margin: 0 0 0.8rem;
 }
 
-h4 {
-  font-size: 1.1rem;
-  margin-bottom: 20px;
-  color: #e74c3c; /* Красный заголовок */
-  text-transform: uppercase;
-  font-weight: 700;
+.footer-lead h2 {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: #ffffff;
 }
 
-p {
-  color: #666;
-  line-height: 1.6;
+.footer-col h3 {
+  font-size: 1rem;
+  color: #ffffff;
 }
 
-.footer-links {
+.footer-lead p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+.footer-col ul {
   list-style: none;
+  margin: 0;
   padding: 0;
+  display: grid;
+  gap: 0.7rem;
 }
 
-.footer-links li {
-  margin-bottom: 10px;
+.footer-col a {
+  color: rgba(255, 255, 255, 0.82);
 }
 
-.footer-links a {
-  text-decoration: none;
-  color: #555;
-  transition: color 0.3s, padding-left 0.3s;
+.footer-col a:hover {
+  color: #ffffff;
 }
 
-.footer-links a:hover {
-  color: #e74c3c;
-  padding-left: 5px;
-}
-
-.copyright-bar {
-  background-color: #f8f9fa; /* Чуть сероватый фон для низа */
-  padding: 15px 0;
-  text-align: center;
+.footer-bottom {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.68);
   font-size: 0.9rem;
-  color: #888;
-  border-top: 1px solid #eee;
+}
+
+@media (max-width: 860px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    justify-content: flex-start;
+  }
 }
 </style>
