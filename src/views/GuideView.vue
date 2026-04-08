@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 import { annualEvents, routeCards, travelOptions, usefulLinks } from '../data/kovrov'
+
+const utilityTags = ['Официально', 'Для поездки', 'Навигация']
 </script>
 
 <template>
@@ -87,10 +89,17 @@ import { annualEvents, routeCards, travelOptions, usefulLinks } from '../data/ko
           </div>
 
           <div class="utility-links">
-            <article v-for="item in usefulLinks" :key="item.href" class="surface-card utility-link">
+            <article
+              v-for="(item, index) in usefulLinks"
+              :key="item.href"
+              class="surface-card utility-link"
+            >
+              <span class="utility-link__tag">{{ utilityTags[index] ?? 'Сервис' }}</span>
               <h3>{{ item.title }}</h3>
               <p>{{ item.description }}</p>
-              <a :href="item.href" target="_blank" rel="noreferrer">{{ item.label }}</a>
+              <a class="utility-link__action" :href="item.href" target="_blank" rel="noreferrer">
+                {{ item.label }}
+              </a>
             </article>
           </div>
         </div>
@@ -264,7 +273,7 @@ import { annualEvents, routeCards, travelOptions, usefulLinks } from '../data/ko
 }
 
 .utility-links {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .utility-link,
@@ -272,11 +281,62 @@ import { annualEvents, routeCards, travelOptions, usefulLinks } from '../data/ko
   padding: 1.15rem;
 }
 
-.utility-link a {
+.utility-link {
+  display: grid;
+  gap: 0.8rem;
+  align-content: start;
+  min-height: 220px;
+  padding: 1.3rem;
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(31, 76, 107, 0.05), rgba(255, 255, 255, 0) 92px),
+    var(--surface);
+}
+
+.utility-link:last-child {
+  grid-column: 1 / -1;
+  min-height: 0;
+}
+
+.utility-link__tag {
   display: inline-flex;
-  margin-top: 1rem;
+  align-items: center;
+  justify-self: start;
+  min-height: 30px;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-deep);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.utility-link h3 {
+  max-width: 12ch;
+  font-size: clamp(1.2rem, 1vw + 0.95rem, 1.65rem);
+  line-height: 1.08;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+
+.utility-link p {
+  margin: 0;
+  max-width: 30ch;
+}
+
+.utility-link__action {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  margin-top: auto;
   color: var(--accent);
   font-weight: 700;
+}
+
+.utility-link__action:hover {
+  color: var(--accent-deep);
 }
 
 .travel-note__stack {
@@ -304,8 +364,7 @@ import { annualEvents, routeCards, travelOptions, usefulLinks } from '../data/ko
 }
 
 @media (max-width: 1180px) {
-  .event-grid,
-  .utility-links {
+  .event-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -331,6 +390,10 @@ import { annualEvents, routeCards, travelOptions, usefulLinks } from '../data/ko
   .event-grid,
   .utility-links {
     grid-template-columns: 1fr;
+  }
+
+  .utility-link:last-child {
+    grid-column: auto;
   }
 }
 </style>
