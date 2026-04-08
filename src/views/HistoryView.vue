@@ -121,13 +121,13 @@ const heritageFacts = [
 
 <style scoped>
 .heritage-hero {
-  padding-block: 2.2rem 1.25rem;
+  padding-block: 1.8rem 1rem;
 }
 
 .heritage-hero__grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(360px, 0.95fr);
-  gap: 1.25rem;
+  gap: 1.5rem;
   align-items: start;
 }
 
@@ -242,6 +242,11 @@ const heritageFacts = [
   overflow: hidden;
 }
 
+.heritage-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 34px rgba(20, 42, 58, 0.1);
+}
+
 .heritage-card__image {
   width: 100%;
   aspect-ratio: 16 / 10;
@@ -289,10 +294,21 @@ const heritageFacts = [
   line-height: 1.55;
 }
 
-@media (max-width: 1040px) {
+@media (max-width: 1180px) {
+  .heritage-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 980px) {
   .heritage-hero__grid,
+  .summary-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 860px) {
   .heritage-grid,
-  .summary-layout,
   .timeline__item {
     grid-template-columns: 1fr;
   }

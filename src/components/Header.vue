@@ -121,6 +121,7 @@ watch(
   display: flex;
   justify-content: center;
   gap: 1.25rem;
+  min-width: 0;
 }
 
 .site-nav__link {
@@ -128,6 +129,8 @@ watch(
   padding: 0.5rem 0;
   color: var(--muted);
   font-weight: 700;
+  font-size: 0.95rem;
+  text-align: center;
 }
 
 .site-nav__link::after {
@@ -166,6 +169,10 @@ watch(
   font-weight: 700;
 }
 
+.header-action:hover {
+  background: var(--accent-deep);
+}
+
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -187,7 +194,7 @@ watch(
   background: var(--accent-deep);
 }
 
-@media (max-width: 920px) {
+@media (max-width: 1120px) {
   .header-layout {
     grid-template-columns: minmax(0, 1fr) auto auto;
     padding-block: 0.75rem;

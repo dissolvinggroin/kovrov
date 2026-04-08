@@ -108,6 +108,16 @@ const year = new Date().getFullYear()
 
 @media (max-width: 860px) {
   .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-lead {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-grid {
     grid-template-columns: 1fr;
   }
 

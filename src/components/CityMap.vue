@@ -89,6 +89,7 @@ onBeforeUnmount(() => {
   min-height: 420px;
   border-radius: var(--radius-md);
   overflow: hidden;
+  border: 1px solid var(--line);
 }
 
 .city-map__legend {
@@ -111,5 +112,11 @@ onBeforeUnmount(() => {
 
 .city-map__chip--primary {
   background: #dfe9ef;
+}
+
+@media (max-width: 720px) {
+  .city-map__frame {
+    min-height: 320px;
+  }
 }
 </style>

@@ -120,7 +120,7 @@ import { annualEvents, routeCards, travelOptions, usefulLinks } from '../data/ko
 .guide-hero {
   position: relative;
   overflow: hidden;
-  min-height: 340px;
+  min-height: 320px;
   background: #102839;
 }
 
@@ -141,8 +141,8 @@ import { annualEvents, routeCards, travelOptions, usefulLinks } from '../data/ko
   z-index: 1;
   display: flex;
   align-items: end;
-  min-height: 340px;
-  padding-block: 2.5rem;
+  min-height: 320px;
+  padding-block: 2.25rem;
 }
 
 .page-shell--compact {
@@ -303,10 +303,32 @@ import { annualEvents, routeCards, travelOptions, usefulLinks } from '../data/ko
   margin-top: 1rem;
 }
 
-@media (max-width: 1040px) {
-  .route-panel,
+@media (max-width: 1180px) {
   .event-grid,
-  .utility-layout,
+  .utility-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 980px) {
+  .utility-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .guide-hero,
+  .guide-hero__content {
+    min-height: 280px;
+  }
+}
+
+@media (max-width: 900px) {
+  .route-panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .event-grid,
   .utility-links {
     grid-template-columns: 1fr;
   }

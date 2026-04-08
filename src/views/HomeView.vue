@@ -134,12 +134,12 @@ const homeEvents = annualEvents.filter((_, index) => [0, 4, 5].includes(index))
     <section class="page-shell page-shell--compact">
       <div class="container routes-layout">
         <div class="routes-layout__intro">
-        <div class="section-heading">
-          <span class="eyebrow">Маршруты</span>
-          <h2>Маршруты по городу и окрестностям.</h2>
-          <p>
-            Прогулка по центру, индустриальная история и поездка в окрестности помогают
-            увидеть город с разных сторон.
+          <div class="section-heading">
+            <span class="eyebrow">Маршруты</span>
+            <h2>Маршруты по городу и окрестностям.</h2>
+            <p>
+              Прогулка по центру, индустриальная история и поездка в окрестности помогают
+              увидеть город с разных сторон.
             </p>
           </div>
           <RouterLink class="button" to="/guide">Открыть все маршруты</RouterLink>
@@ -245,18 +245,18 @@ const homeEvents = annualEvents.filter((_, index) => [0, 4, 5].includes(index))
 
 <style scoped>
 .home-hero {
-  padding-block: 2.2rem 1.25rem;
+  padding-block: 1.8rem 1rem;
 }
 
 .home-hero__grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(360px, 0.95fr);
-  gap: 1.25rem;
+  gap: 1.5rem;
   align-items: start;
 }
 
 .home-hero__copy {
-  padding: 2rem 0;
+  padding: 1.5rem 0;
 }
 
 .hero-stats {
@@ -329,6 +329,7 @@ const homeEvents = annualEvents.filter((_, index) => [0, 4, 5].includes(index))
 
 .quick-link {
   padding: 1.15rem;
+  min-height: 100%;
 }
 
 .quick-link strong {
@@ -368,6 +369,17 @@ const homeEvents = annualEvents.filter((_, index) => [0, 4, 5].includes(index))
   overflow: hidden;
 }
 
+.story-card:hover,
+.place-card:hover,
+.event-card:hover,
+.route-item:hover,
+.travel-card:hover,
+.stay-card:hover,
+.quick-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 34px rgba(20, 42, 58, 0.1);
+}
+
 .story-card__image,
 .place-card__image,
 .event-card__image {
@@ -380,6 +392,8 @@ const homeEvents = annualEvents.filter((_, index) => [0, 4, 5].includes(index))
 .place-card__body,
 .event-card__body {
   padding: 1.15rem;
+  display: grid;
+  align-content: start;
 }
 
 .story-card__eyebrow,
@@ -399,7 +413,6 @@ const homeEvents = annualEvents.filter((_, index) => [0, 4, 5].includes(index))
 .event-card__body h3,
 .route-item__body h3,
 .travel-card h3,
-.map-card h3,
 .stay-card h3 {
   margin: 0;
   font-family: var(--font-heading);
@@ -412,7 +425,6 @@ const homeEvents = annualEvents.filter((_, index) => [0, 4, 5].includes(index))
 .event-card__body p,
 .route-item__body p,
 .travel-card p,
-.map-card p,
 .stay-list__item p {
   margin: 0.7rem 0 0;
   color: var(--muted);
@@ -428,6 +440,18 @@ const homeEvents = annualEvents.filter((_, index) => [0, 4, 5].includes(index))
   grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
   gap: 1rem;
   align-items: start;
+}
+
+.routes-layout__intro,
+.planner-layout__left,
+.planner-layout__right {
+  min-width: 0;
+}
+
+.routes-layout__intro {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
 }
 
 .routes-list {
@@ -525,20 +549,39 @@ const homeEvents = annualEvents.filter((_, index) => [0, 4, 5].includes(index))
   font-weight: 700;
 }
 
-@media (max-width: 1040px) {
-  .home-hero__grid,
-  .routes-layout,
-  .planner-layout,
+@media (max-width: 1180px) {
+  .quick-links,
   .story-grid,
-  .events-grid,
-  .quick-links {
-    grid-template-columns: 1fr;
-  }
-
-  .places-grid {
+  .events-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .home-hero__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(330px, 0.92fr);
+  }
+}
+
+@media (max-width: 980px) {
+  .home-hero__grid,
+  .routes-layout,
+  .planner-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .home-hero__copy {
+    padding-top: 0.5rem;
+  }
+
+  .home-hero__image {
+    min-height: 420px;
+  }
+
+  .planner-layout {
+    gap: 0.85rem;
+  }
+}
+
+@media (max-width: 860px) {
   .route-item {
     grid-template-columns: 1fr;
   }
@@ -546,12 +589,11 @@ const homeEvents = annualEvents.filter((_, index) => [0, 4, 5].includes(index))
 
 @media (max-width: 720px) {
   .hero-stats,
+  .quick-links,
+  .story-grid,
+  .events-grid,
   .places-grid {
     grid-template-columns: 1fr;
-  }
-
-  .home-hero__copy {
-    padding-top: 0.5rem;
   }
 
   .home-hero__image {
