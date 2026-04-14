@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import GuideView from '../views/GuideView.vue'
 import HistoryView from '../views/HistoryView.vue'
+import MayorView from '../views/MayorView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,6 +31,15 @@ const router = createRouter({
       component: HistoryView,
       meta: {
         title: 'История и наследие — Ковров',
+      },
+    },
+    {
+      path: '/mayor',
+      alias: '/head',
+      name: 'mayor',
+      component: MayorView,
+      meta: {
+        title: 'Глава города — Ковров',
       },
     },
   ],

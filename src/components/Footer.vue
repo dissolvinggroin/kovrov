@@ -18,6 +18,7 @@ const year = new Date().getFullYear()
           <li><RouterLink to="/">Главная</RouterLink></li>
           <li><RouterLink to="/guide">Маршруты и события</RouterLink></li>
           <li><RouterLink to="/heritage">История и наследие</RouterLink></li>
+          <li><RouterLink to="/mayor">Глава города</RouterLink></li>
         </ul>
       </div>
 

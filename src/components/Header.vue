@@ -6,6 +6,7 @@ const navItems = [
   { label: 'Главная', to: '/' },
   { label: 'Маршруты и события', to: '/guide' },
   { label: 'История и наследие', to: '/heritage' },
+  { label: 'Глава города', to: '/mayor' },
 ]
 
 const isMenuOpen = ref(false)
